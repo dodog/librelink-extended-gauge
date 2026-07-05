@@ -5,7 +5,7 @@
 
 ## 📊 About
 
-A custom Home Assistant card that combines the default gauge with trend arrow, delta values, and sensor expiration information. Designed specifically for LibreLink CGM data.
+A custom Home Assistant card that combines the default gauge with trend arrow, delta values, and sensor expiration information. Designed specifically for [LibreLink integration](https://github.com/dodog/librelink) data.
 
 **Features:**
 - ⚡ Automatic detection of LibreLink sensors
@@ -17,8 +17,8 @@ A custom Home Assistant card that combines the default gauge with trend arrow, d
 ## 📦 Installation
 
 ### HACS (Recommended)
-1. Add as a custom repository in HACS:
-   - HACS → Clik on 3 dots top right ⋮ → Custom repositories
+1. Add as a custom repository in ![HACS](https://hacs.xyz/):
+   - HACS → Click on 3 dots top right ⋮ → Custom repositories
    - URL: `https://github.com/dodog/librelink-extended-gauge`
    - Type: Dashboard
 2. Click Install
@@ -37,14 +37,14 @@ A custom Home Assistant card that combines the default gauge with trend arrow, d
 
 ```
 type: custom:librelink-extended-gauge
-entity: sensor.john_doe_glucose_measurement
-language: sk
+entity: sensor.john_doe_measurement
+language: en
 ```
 ### Full Configuration
 ```
 type: custom:librelink-extended-gauge
-entity: sensor.john_doe_glucose_measurement
-language: en                    # sk or en (default: sk)
+entity: sensor.john_doe_measurement
+language: en                    # en or sk (default: en
 show_trend_arrow: true          # Show trend arrow (↑, ↓, →)
 show_trend_text: true           # Show trend text (STABLE, Falling, Rising)
 show_delta: true                # Show main delta
@@ -76,14 +76,14 @@ show_delta_15min: false         # Show 15min delta as secondary
 Show 15min as main, 5min as secondary
 ```
 type: custom:librelink-extended-gauge
-entity: sensor.john_doe_glucose_measurement
+entity: sensor.john_doe_measurement
 delta_type: 15
 show_delta_5min: true
 ```
 Show only delta and timestamp (minimal)
 ```
 type: custom:librelink-extended-gauge
-entity: sensor.john_doe_glucose_measurement
+entity: sensor.john_doe_measurement
 show_trend_arrow: false
 show_trend_text: false
 show_expiration: false
@@ -91,7 +91,7 @@ show_expiration: false
 English language with all features
 ```
 type: custom:librelink-extended-gauge
-entity: sensor.john_doe_glucose_measurement
+entity: sensor.john_doe_measurement
 language: en
 show_trend_arrow: true
 show_trend_text: true
@@ -105,9 +105,9 @@ show_delta_15min: true
 ##   🔧 Requirements
 Home Assistant 2024.6.0 or higher
 
-card_mod installed
+[card_mod](https://github.com/thomasloven/lovelace-card-mod) installed
 
-[LibreLink integration](https://github.com/dodog/librelink)
+[LibreLink integration](https://github.com/dodog/librelink) installed
 
 ## 🤝 Contributing
 Contributions are welcome! Please open an issue or submit a PR.
@@ -118,4 +118,4 @@ This project is licensed under the GNU General Public License v3.0.
 ## 🙏 Credits
 Inspired by the default Home Assistant gauge card
 
-Built for the LibreLink Home Assistant integration
+Built for the [LibreLink Home Assistant integration](https://github.com/dodog/librelink)
