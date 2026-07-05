@@ -2,7 +2,7 @@
  * Librelink Extended Gauge Card for Home Assistant
  * 
  * This card combines the default HA gauge with trend arrow, delta, and timestamp.
- * Designed for LibreLink CGM data with automatic sensor detection.
+ * Designed for LibreLink integration with automatic sensor detection.
  * 
  * Installation:
  * 1. Save this file to /config/www/librelink-extended-gauge.js
@@ -105,7 +105,14 @@ class LibrelinkExtendedGauge extends HTMLElement {
         hour_ago: (n) => n === 1 ? '1 hour ago' : `${n} hours ago`,
         day_ago: (n) => n === 1 ? '1 day ago' : `${n} days ago`,
         expired: 'EXPIRED',
-        expires: 'Expires in'
+        expires: 'Expires in',
+        time_units: {
+          min: 'min',
+          h: 'h',
+          d: 'd',
+          week: (n) => n === 1 ? 'week' : 'weeks',
+          month: (n) => n === 1 ? 'month' : 'months'
+        }
       },
       sk: {
         just_now: 'Pred chvíľou',
@@ -113,7 +120,14 @@ class LibrelinkExtendedGauge extends HTMLElement {
         hour_ago: (n) => n === 1 ? 'Pred 1 hodinou' : `Pred ${n} hodinami`,
         day_ago: (n) => n === 1 ? 'Pred 1 dňom' : `Pred ${n} dňami`,
         expired: 'EXPIROVAL',
-        expires: 'Exspiruje o'
+        expires: 'Exspiruje o',
+        time_units: {
+          min: 'min',
+          h: 'h',
+          d: 'd',
+          week: (n) => n === 1 ? 'týždeň' : 'týždne',
+          month: (n) => n === 1 ? 'mesiac' : 'mesiace'
+        }
       }
     };
     return translations[lang] || translations.sk;
@@ -305,18 +319,20 @@ class LibrelinkExtendedGauge extends HTMLElement {
       const diffMonths = Math.floor(diffDays / 30);
       
       let timeStr = '';
-      if (diffMinutes < 1) return `${t.expires} 1 min`;
-      if (diffMinutes < 60) {
-        timeStr = `${diffMinutes} min`;
+      if (diffMinutes < 1) {
+        timeStr = '1 min';
+      } else if (diffMinutes < 60) {
+        timeStr = `${diffMinutes} ${t.time_units.min}`;
       } else if (diffHours < 24) {
-        timeStr = `${diffHours} h`;
+        timeStr = `${diffHours} ${t.time_units.h}`;
       } else if (diffDays < 7) {
-        timeStr = `${diffDays} d`;
+        timeStr = `${diffDays} ${t.time_units.d}`;
       } else if (diffDays < 30) {
-        timeStr = `${diffWeeks} týž`;
+        timeStr = `${diffWeeks} ${t.time_units.week(diffWeeks)}`;
       } else {
-        timeStr = `${diffMonths} mes`;
+        timeStr = `${diffMonths} ${t.time_units.month(diffMonths)}`;
       }
+      
       return `${t.expires} ${timeStr}`;
     } catch (e) {
       return isoString;
