@@ -18,9 +18,9 @@ A custom Home Assistant card that combines the default gauge with trend arrow, d
 
 ### HACS (Recommended)
 1. Add as a custom repository in HACS:
-   - HACS → ⋮ → Custom repositories
+   - HACS → Clik on 3 dots top right ⋮ → Custom repositories
    - URL: `https://github.com/dodog/librelink-extended-gauge`
-   - Category: Lovelace
+   - Type: Dashboard
 2. Click Install
 
 ### Manual Installation
