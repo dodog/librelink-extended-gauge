@@ -8,8 +8,8 @@
 A custom Home Assistant card that combines the default gauge with trend arrow, delta values, and sensor expiration information. Designed specifically for LibreLink CGM data.
 
 **Features:**
-- ⚡ Automatic detection of all LibreLink sensors
-- 🌍 Multi-language support (English,Slovak)
+- ⚡ Automatic detection of LibreLink sensors
+- 🌍 Multi-language support (English, Slovak)
 - 🎯 Configurable delta display (1min, 5min, 15min)
 - ⏰ Sensor expiration countdown
 - 🎨 Clean, minimal design
