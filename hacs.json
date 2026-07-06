@@ -1,7 +1,7 @@
 {
-  "name": "Librelink Extended Gauge",
+  "name": "Librelink Extended Card",
   "render_readme": true,
   "homeassistant": "2024.6.0",
   "content_in_root": false,
-  "filename": "librelink-extended-gauge.js"
+  "filename": "librelink-extended-card.js"
 }
