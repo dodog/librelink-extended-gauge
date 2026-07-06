@@ -87,7 +87,14 @@ class LibrelinkExtendedCard extends HTMLElement {
         hour_ago: (n) => n === 1 ? '1 hour ago' : `${n} hours ago`,
         day_ago: (n) => n === 1 ? '1 day ago' : `${n} days ago`,
         expired: 'EXPIRED',
-        expires: 'Expires in'
+        expires: 'Expires in',
+        less_than_hour: 'Less than 1 hour',
+        one_hour: '1 hour',
+        one_day: '1 day',
+        time_units: {
+          hours: 'hours',
+          days: 'days'
+        }
       },
       sk: {
         just_now: 'Pred chvíľou',
@@ -95,7 +102,14 @@ class LibrelinkExtendedCard extends HTMLElement {
         hour_ago: (n) => n === 1 ? 'Pred 1 hodinou' : `Pred ${n} hodinami`,
         day_ago: (n) => n === 1 ? 'Pred 1 dňom' : `Pred ${n} dňami`,
         expired: 'EXPIROVAL',
-        expires: 'Exspiruje o'
+        expires: 'Exspiruje o',
+        less_than_hour: 'Menej ako 1 hodinu',
+        one_hour: '1 hodinu',
+        one_day: '1 deň',
+        time_units: {
+          hours: 'hodín',
+          days: 'dní'
+        }
       }
     };
     return translations[lang] || translations.sk;
@@ -153,14 +167,11 @@ class LibrelinkExtendedCard extends HTMLElement {
       
       let timeStr = '';
       if (diffDays >= 1) {
-        // Show days
-        timeStr = diffDays === 1 ? '1 day' : `${diffDays} days`;
+        timeStr = diffDays === 1 ? t.one_day : `${diffDays} ${t.time_units.days}`;
       } else if (diffHours >= 1) {
-        // Show hours (only when less than 1 day remains)
-        timeStr = diffHours === 1 ? '1 hour' : `${diffHours} hours`;
+        timeStr = diffHours === 1 ? t.one_hour : `${diffHours} ${t.time_units.hours}`;
       } else {
-        // Less than 1 hour - show "Less than 1 hour"
-        timeStr = 'Less than 1 hour';
+        timeStr = t.less_than_hour;
       }
       
       return `${t.expires} ${timeStr}`;
@@ -351,7 +362,7 @@ class LibrelinkExtendedCard extends HTMLElement {
     // Build the card
     this.innerHTML = `
       <ha-card style="
-        padding: 16px;
+        padding: 3px 6px 3px 6px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -360,7 +371,7 @@ class LibrelinkExtendedCard extends HTMLElement {
         border-radius: var(--ha-card-border-radius);
         box-shadow: var(--ha-card-box-shadow);
         border: none;
-        min-height: ${this._config.show_measurement !== false ? '150px' : '100px'};
+        min-height: ${this._config.show_measurement !== false ? '130px' : '80px'};
       ">
         ${infoLines.join('')}
       </ha-card>
