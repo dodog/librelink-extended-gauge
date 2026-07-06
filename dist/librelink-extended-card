@@ -10,9 +10,18 @@
  * 
  * Usage:
  * type: custom:librelink-extended-card
- * entity: sensor.your_glucose_sensor
+ * entity: sensor.your_name_measurement
  * language: en (or sk)
- * show_measurement: true (optional, defaults to true)
+ * show_measurement: true (optional, defaults to true) 
+ * show_trend_arrow: true (optional, defaults to true)
+ * show_trend_text: true (optional, defaults to true)
+ * show_delta: true (optional, defaults to true)
+ * show_timestamp: true (optional, defaults to true)
+ * show_expiration: true (optional, defaults to true)
+ * delta_type: 5 (optional, 1, 5, or 15, defaults to 5)
+ * show_delta_1min: false (optional, show 1min delta as secondary)
+ * show_delta_5min: false (optional, show 5min delta as secondary)
+ * show_delta_15min: false (optional, show 15min delta as secondary)
  */
 
 class LibrelinkExtendedCard extends HTMLElement {
