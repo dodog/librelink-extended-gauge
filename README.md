@@ -9,7 +9,7 @@ A custom Home Assistant card with trend arrow, delta values, and sensor expirati
 
 **Features:**
 - ⚡ Automatic detection of LibreLink sensors
-- 🌍 Multi-language support (English, Slovak)
+- 🌍 Multi-language support (English, German, Spanish, French, Slovak)
 - 🎯 Configurable delta display (1min, 5min, 15min)
 - ⏰ Sensor expiration countdown
 - 🎨 Clean, minimal design
@@ -44,7 +44,7 @@ language: en
 ```
 type: custom:librelink-extended-card
 entity: sensor.john_doe_measurement
-language: en                    # en or sk (default: en
+language: en                    # en (or sk, de, fr, es) - optional
 show_trend_arrow: true          # Show trend arrow (↑, ↓, →)
 show_trend_text: true           # Show trend text (STABLE, Falling, Rising)
 show_delta: true                # Show main delta
@@ -60,7 +60,7 @@ show_delta_15min: false         # Show 15min delta as secondary
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | entity | string | Required | Main glucose sensor |
-| language | string | en | en or sk |
+| language | string | en | en (or sk, de, fr, es) - optional|
 | show_measurement | boolean | true | Show/hide measurement |
 | show_trend_arrow | boolean | true | Show/hide trend arrow |
 | show_trend_text | boolean | true | Show/hide trend text |
